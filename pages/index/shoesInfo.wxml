@@ -1,0 +1,17 @@
+<template name="shoesInfo">
+        <view class="shoes-info">
+           
+            <view class="shoes-info-left">
+                <view class="shoes-info-pic">
+                    <image mode="aspectFit" src="https://www2.flightclub.cn/static/img/release/20170626ef25e46d7f27c5be7ade64a9cbab422b.jpg"></image>
+                </view>
+            </view>
+            <view class="shoes-info-right">
+                <view class="shoes-info-title">{{name}}</view>
+                <view class="shoes-info-price">
+                    <span class="myiconfont icon-qian"></span>{{price}}
+                </view>
+                <view class="shoes-info-pubdata">{{pub_data}}</view>
+            </view>
+        </view>
+</template>
