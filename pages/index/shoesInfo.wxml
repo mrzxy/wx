@@ -1,5 +1,5 @@
 <template name="shoesInfo">
-        <view class="shoes-info">
+        <navigator url="detail"  class="shoes-info">
            
             <view class="shoes-info-left">
                 <view class="shoes-info-pic">
@@ -13,5 +13,5 @@
                 </view>
                 <view class="shoes-info-pubdata">{{pub_data}}</view>
             </view>
-        </view>
+        </navigator>
 </template>

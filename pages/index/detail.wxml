@@ -1,0 +1,32 @@
+
+<!-- 图片导航区 -->
+<swiper class="pic-swiper-box" indicator-dots>
+    <view wx:for="{{maps}}" wx:for-item="item">
+        <swiper-item>
+            <image mode="widthFix" src="{{item.pic}}"></image>
+        </swiper-item>
+    </view>
+    
+</swiper>
+
+<view class="container">
+    <view class="title">{{title}}</view>
+    <view class="hr"></view>
+    <view class="body">
+        <view class="body-left">
+            <view class="price">
+                <span class="myiconfont icon-qian"></span>{{price}}
+            </view>
+            <view class="price-desc">官方指导价</view>
+        </view>
+        <view class="body-right">
+            <view class="body-btns">
+                            
+                <button plain style="border:0px" class="share-btn" open-type="share"><view class="myiconfont icon-fenxiang" ></view> </button>
+            </view>
+        </view>
+    </view>
+    <view class="hr"></view>
+</view>
+
+

@@ -25,7 +25,7 @@
 .shoes-info-right {
     padding: 10rpx;
     flex-direction: column;
-    font-size: 11pt;
+    font-size: 10pt;
     width: 400rpx;
 }
 
@@ -33,7 +33,7 @@
 .shoes-info-price {
     margin-top: 13rpx;
     font-weight: bold;
-    font-size: 12pt;
+    font-size: 11pt;
     height: 60rpx;
 }
 
