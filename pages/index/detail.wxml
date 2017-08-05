@@ -1,21 +1,26 @@
 
+
 <!-- 图片导航区 -->
 <swiper class="pic-swiper-box" indicator-dots>
-    <view wx:for="{{maps}}" wx:for-item="item">
-        <swiper-item>
-            <image mode="widthFix" src="{{item.pic}}"></image>
+    <view wx:for="{{shoes.pics}}" wx:key="pic" wx:for-index="key" wx:for-item="pic">
+        <swiper-item class="pic-swiper-item">
+            <template is="img-loader" data="{{ imgLoadList }}"></template>
+            <!-- <image wx:if="{{key==0}}" src="/statics/img/loading.gif" hidden="{{showLoading}}" class="loading"></image> -->
+            <image wx:if="{{picSize[key]['loaded']}}" style="width:{{picSize[key]['w']}}px"  src="{{pic}}"></image> 
         </swiper-item>
     </view>
     
 </swiper>
 
 <view class="container">
-    <view class="title">{{title}}</view>
+    <view class="title">{{shoes.name}}</view>
     <view class="hr"></view>
     <view class="body">
         <view class="body-left">
             <view class="price">
-                <span class="myiconfont icon-qian"></span>{{price}}
+                <span wx:if="{{shoes.price_type==1}}" class="myiconfont icon-qian"></span>
+                <span wx:if="{{shoes.price_type==2}}" class="myiconfont icon-meiyuan"></span>
+                {{shoes.price}}
             </view>
             <view class="price-desc">官方指导价</view>
         </view>
@@ -28,5 +33,9 @@
     </view>
     <view class="hr"></view>
 </view>
+
+<!-- 引入图片预加载组件 -->
+<import src="../../plugins/img-loader/img-loader.wxml"/>
+<template is="img-loader" data="{{ imgLoadList }}"></template>
 
 

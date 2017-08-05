@@ -4,9 +4,21 @@
     height: 200px;
 }
 
-.pic-swiper-box image {
+.pic-swiper-item {
     height: 100%;
     width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.pic-swiper-item .loading {
+    height: 45px;
+    width: 50px;
+}
+
+.pic-swiper-item image {
+    height: 100%;
 }
 
 .title {

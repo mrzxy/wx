@@ -8,5 +8,5 @@
         </view>
 
     </view>
-    <view class="next-data">——下拉加载更多——</view>
+    <view class="next-data">{{pullDownText}}</view>
 </view>

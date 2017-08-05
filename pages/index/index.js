@@ -3,46 +3,45 @@
 var app = getApp()
 Page({
 
+    offset: 0,
+    lockPullDown: false,
+
     data: {
+        pullDownText: '——下拉加载更多——',
         pageHeight: 0,
         lists: [
-            {
-                name: 'Adidas Yeezy Powerphase Calabasas Core White',
-                price: '1000~1500',
-                pub_data: '2017-01-01'
-            },
-            {
-                name: 'Ai VaporMax xxx Triple Black 2.0',
-                price: '1300',
-                pub_data: '2017-01-01'
-            },
-            {
-                name: 'Ai VaporMax xxx Triple Black 2.0',
-                price: '1300',
-                pub_data: '2017-01-01'
-            },
-            {
-                name: 'Ai VaporMax xxx Triple Black 2.0',
-                price: '1300',
-                pub_data: '2017-01-01'
-            },
-            {
-                name: 'Ai VaporMax xxx Triple Black 2.0',
-                price: '1300',
-                pub_data: '2017-01-01'
-            },
-            {
-                name: 'Ai VaporMax xxx Triple Black 2.0',
-                price: '1300',
-                pub_data: '2017-01-01'
-            }
+           
         ]
     },
 
     onLoad: function () {
+        this.getSaleData([])
+    },
 
+    getSaleData: function(params) {
+        const context = this
+        wx.request({
+            url: app.config.requestUrl+'/api/sale-calendar/',
+            data: {
+                offset: context.offset,
+                limit: 10 
+            },
+            success: function (res) {
+                if (res.data.length < 1) {
+                    context.setData({pullDownText: '——已经拉到底了——'});
+                    context.lockPullDown = true;
+                    return ;
+                }
 
-       
+                var lists = context.data.lists;
+                lists = context.data.lists.concat(res.data)
+
+                context.offset += res.data.length;
+                context.setData({
+                    lists: lists
+                })
+            }
+        })
     },
 
     //下拉碰顶
@@ -52,19 +51,12 @@ Page({
 
     //上拉触底
     onReachBottom: function () {
-        var context = this,
-            lists = this.data.lists;
-        lists.push(lists[Math.round(Math.random()*10%(lists.length))]);
-        setTimeout(function () {
-            context.setData({
-                lists: lists
-            })
-        }, 2000)
+        ! this.lockPullDown && this.getSaleData([]);
     },
 
     //转发
     onShareAppMessage: function (res) {
-    
+        //TODO
         return {
             title: 'hi, 大姐姐',
             success: function (res) {
@@ -77,9 +69,6 @@ Page({
             }
         }
     },
-
-
-   
 
 
     //事件处理函数
