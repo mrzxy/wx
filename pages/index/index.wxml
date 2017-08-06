@@ -6,7 +6,6 @@
         <view wx:for="{{lists}}" wx:key="key" wx:for-item="item">
             <template  is="shoesInfo" data="{{...item}}"></template>
         </view>
-
+         <view class="next-data">{{pullDownText}}</view> 
     </view>
-    <view class="next-data">{{pullDownText}}</view>
 </view>

@@ -21,7 +21,7 @@ Page({
     onLoad (options)
     {
         var context = this;
-        options.id = 26; 
+        // options.id = 26; 
 
         wx.getSystemInfo({
             success: function (res) {
@@ -50,13 +50,14 @@ Page({
                     title: res.data.name
                 })
 
+                console.log(res.data)
+
                 const pics = res.data.pics.map(url => {
                     return {
                         url: url,
                         loaded: false
                     }
                 })
-                console.log(pics);
 
                 context.setData({
                     shoes: res.data,
@@ -72,31 +73,25 @@ Page({
     loadPics()
     {
         this.imgLoader = new ImgLoader(this, this.imageOnLoad.bind(this))
-    },
-
-    loadImages ()
-    {
         //同时发起全部图片的加载
         this.data.pics.forEach(item => {
-            this.imgLoader.load(item)
+            this.imgLoader.load(item.url)
         })
     },
 
     imageOnLoad(err, data)
     {
-        console.log('图片加载完成', err, data.src)
-
-        const imgList = this.data.pics.map(item => {
-            if (item == data.src)
+        const pics = this.data.pics.map(item => {
+            if (item.url == data.src) {
                 item.loaded = true
-            return {
-                url: item
-                // lo
+                item.w = data.width
             }
+            return item
         })
-        this.setData({ imgList })
+        this.setData({ pics })
     },
 
+    /*
     imageLoad (e) {  
         var context = this,
             picSize = this.data.picSize
@@ -114,6 +109,7 @@ Page({
             })  
         }, 2000);
     }  ,
+    */
 
   
 
@@ -122,7 +118,7 @@ Page({
      */
     onShareAppMessage () {
         return {
-            title: this.data.title
+            title: this.data.shoes.name
         }
     }
 })
