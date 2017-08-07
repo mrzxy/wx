@@ -50,9 +50,7 @@ Page({
                     title: res.data.name
                 })
 
-                console.log(res.data)
-
-                const pics = res.data.pics.map(url => {
+                const pics = res.data.pics.format.map(url => {
                     return {
                         url: url,
                         loaded: false
@@ -91,26 +89,23 @@ Page({
         this.setData({ pics })
     },
 
-    /*
-    imageLoad (e) {  
-        var context = this,
-            picSize = this.data.picSize
-        picSize[this.picNo] = {
-            'w':e.detail.width
-        }
-        console.log(picSize)
 
-        this.picNo += 1;
-
-        setTimeout(function() {
-            context.setData({  
-                picSize : picSize,
-                showLoading: true
-            })  
-        }, 2000);
-    }  ,
-    */
-
+    //查看原图
+    showSrcPic(e)
+    {
+        var current = e.target.dataset.src
+        wx.previewImage({
+            current: current,
+            urls: this.data.shoes.pics.src,
+            fail: function() {
+            　　　　console.log('fail')
+        　　　　 },
+            complete: function () {
+                console.info("点击图片了");
+            },
+       })
+        return false;
+    },
   
 
     /**

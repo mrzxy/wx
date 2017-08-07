@@ -16,6 +16,13 @@ function formatNumber(n) {
   return n[1] ? n : '0' + n
 }
 
+function checkMobile(code) {
+
+    return /^1[0-9]{10}$/.test(code);
+}
+
+
 module.exports = {
-  formatTime: formatTime
+  formatTime: formatTime,
+  checkMobile: checkMobile
 }

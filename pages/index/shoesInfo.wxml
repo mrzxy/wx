@@ -1,5 +1,5 @@
 <template name="shoesInfo">
-        <navigator url="detail?id={{id}}"  class="shoes-info">
+        <navigator url="/pages/detail/detail?id={{id}}"  class="shoes-info">
             <view class="shoes-info-left">
                 <view class="shoes-info-pic">
                     <image mode="aspectFit" src="{{pics[0]}}"></image>

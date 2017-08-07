@@ -15,6 +15,7 @@ Page({
     },
 
     onLoad: function () {
+       
         this.getSaleData([])
     },
 
@@ -44,6 +45,8 @@ Page({
         })
     },
 
+
+
     //下拉碰顶
     onPullDownRefresh: function () {
         wx.stopPullDownRefresh()
@@ -58,15 +61,7 @@ Page({
     onShareAppMessage: function (res) {
         //TODO
         return {
-            title: 'hi, 大姐姐',
-            success: function (res) {
-                //转发成功
-                console.log('ok');
-            },
-
-            fail: function (res) {
-                console.log(res)
-            }
+            title: '球鞋发售日历'
         }
     },
 

@@ -1,0 +1,24 @@
+<view class="container main" style="height:{{bgHeight}}px;background: url('http://7xo6tu.com1.z0.glb.clouddn.com/message-bg.jpg');">
+    <view class="main">
+        <view class="title">留言&建议</view>
+        <form class="submit-form" bindsubmit="formSubmit">
+            <view class="section">
+                <label>
+                    <text>联系方式(手机号):</text>
+                    <input name="phone" class="text-input" type="number" value="" />
+                </label>
+            </view>
+    
+            <view class="section">
+                <label>
+                    <text>内容:</text>
+                    <textarea name="content" class="textarea" value="" />
+                </label>
+            </view>
+
+            <view class="section">
+                <button plain form-type="submit">提交</button>
+            </view>
+        </form>
+    </view>
+</view>

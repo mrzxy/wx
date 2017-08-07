@@ -57,7 +57,6 @@ class ImgLoader {
         //记录已下载图片的尺寸信息
         this.imgInfo[src] = { width, height }
         this._removeFromLoadList(src)
-
         this._runCallback(null, { src, width, height })
     }
 

@@ -1,14 +1,35 @@
 {
-  "pages":[
-    
-    "pages/index/index",
-    "pages/index/detail"
-    
-  ],
-  "window":{
-    "backgroundTextStyle":"light",
-    "navigationBarBackgroundColor": "#000",
-    "navigationBarTitleText": "首页",
-    "navigationBarTextStyle":"#fff"
-  }
+    "pages": [
+        "pages/user/message",
+        "pages/index/index",
+        "pages/detail/detail"
+    ],
+    "window": {
+        "backgroundTextStyle": "light",
+        "navigationBarBackgroundColor": "#000",
+        "navigationBarTitleText": "首页",
+        "navigationBarTextStyle": "#fff"
+    },
+
+    "tabBar": {
+        "color": "#C0C0C0",
+        "selectedColor": "#111",
+        "backgroundColor": "#F5F5F5",
+        "borderStyle": "#DCDCDC",
+        "list": [
+            {
+                "iconPath": "statics/img/calendar-icon.png",
+                "selectedIconPath": "statics/img/calendar-icon-hover.png",
+                "pagePath":"pages/index/index",
+                "text":"发售日历"
+            },
+            {
+                "iconPath": "statics/img/msg-icon.png",
+                "selectedIconPath": "statics/img/msg-icon-hover.png",
+                "pagePath":"pages/user/message",
+                "text":"留言板"
+            }
+        ]
+    }
+
 }
