@@ -41,7 +41,8 @@ Page({
         var context = this;
         params['h'] = 200;
         wx.request({
-            url:  app.config.requestUrl+'/api/shoes-detail/'+params.id,
+            
+            url:  app.getRequestUrl('shoes-detail/'+params.id),
             data: params,
 
             success: function (res) {

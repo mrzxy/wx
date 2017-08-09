@@ -2,19 +2,19 @@
 
 App({
     config: {
-        requestUrl: 'https://jj.projcloud.cn'
+        requestUrl: 'https://jj.projcloud.cn/api/'
     },
         
-    onLaunch: function() {
+    onLaunch ()
+    {
         //调用API从本地缓存中获取数据
         var logs = wx.getStorageSync('logs') || []
         logs.unshift(Date.now())
         wx.setStorageSync('logs', logs)
     },
 
-
-
-    getUserInfo: function(cb) {
+    getUserInfo (cb)
+    {
         var that = this
         if (this.globalData.userInfo) {
             typeof cb == "function" && cb(this.globalData.userInfo)
@@ -31,6 +31,10 @@ App({
     },
 
 
+    getRequestUrl (path)
+    {
+        return this.config.requestUrl+path
+    },
 
     globalData: {
        

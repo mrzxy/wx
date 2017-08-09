@@ -22,7 +22,7 @@ Page({
     getSaleData: function(params) {
         const context = this
         wx.request({
-            url: app.config.requestUrl+'/api/sale-calendar/',
+            url: app.getRequestUrl('sale-calendar'),
             data: {
                 offset: context.offset,
                 limit: 10 

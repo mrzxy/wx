@@ -1,12 +1,15 @@
-let util = require('../../utils/util.js');
-
+let util = require('../../utils/util.js'),
+    app = getApp()
 Page({
 
     contentMinLimit: 5,
 
     data: {
         bgHeight: 456,      //iphone6s默认值
-        user: {}
+        user: {},
+        formData: {
+            
+        }
     },
 
     onLoad()    
@@ -21,39 +24,35 @@ Page({
                 })
             }
         })
-        wx.getUserInfo({
-            success: function(res){
-                context.setData({user: JSON.parse(res.rawData)})
-            },
-            fail: function() {
-                // fail
-            },
-            complete: function() {
-                // complete
-            }
+
+        app.getUserInfo((raw) => {
+            context.setData({user: raw})
         })
+       
     },
 
     formSubmit (e)
     {
-        let msg = '',
+        let context = this,
+            msg = '',
             data = e.detail.value
 
-        // if (! util.checkMobile(data.phone)) {
-        //     msg = '请输入正确的手机号'
-        // }
+        if (! util.checkMobile(data.phone)) {
+            msg = '请输入正确的手机号'
+        }
 
-        // if (data.content.length < this.contentMinLimit) {
-        //     msg = '请输入至少'+this.contentMinLimit+'个字符'
-        // }
+        if (data.content.length < this.contentMinLimit) {
+            msg = '请输入至少'+this.contentMinLimit+'个字符'
+        }
 
         if (msg !== '') {
-             wx.showToast({
+            wx.showToast({
                 title: msg,
                 icon: 'loading'
             })
             return false;
         }
+
 
         let o = this.data.user
 
@@ -61,15 +60,32 @@ Page({
             data.wx_name = this.data.user.nickName
         }
 
-        //TODO
         wx.request({
-            url: 'https://URL',
+            url: app.getRequestUrl('guest-book'),
             data: data,
-            method: 'GET',
+            method: 'POST',
             success: function(res){
-                // success
+                if (res.statusCode == 200) {
+                    msg = res.data.msg
+                    context.resetFormData()
+                } else {
+                    msg = '数据有误'
+                }
+
+                wx.showToast({
+                    title: msg,
+                    icon: 'success'
+                })
             }
             
+        })
+    },
+
+    //重置表单数据
+    resetFormData()
+    {
+        this.setData({
+            formData: {}
         })
     }
 })
