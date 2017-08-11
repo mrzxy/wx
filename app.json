@@ -1,8 +1,10 @@
 {
     "pages": [
+        "pages/shoes/list",
         "pages/index/index",
         "pages/detail/detail",
         "pages/user/message"
+        
     ],
     "window": {
         "backgroundTextStyle": "light",
@@ -22,6 +24,12 @@
                 "selectedIconPath": "statics/img/calendar-icon-hover.png",
                 "pagePath":"pages/index/index",
                 "text":"发售日历"
+            },
+            {
+                "iconPath": "statics/img/calendar-icon.png",
+                "selectedIconPath": "statics/img/calendar-icon-hover.png",
+                "pagePath":"pages/shoes/list",
+                "text":"球鞋库"
             },
             {
                 "iconPath": "statics/img/msg-icon.png",

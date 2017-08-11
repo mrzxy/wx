@@ -23,10 +23,13 @@ Page({
         var context = this;
         // options.id = 26; 
 
+        console.log(options);
+
         wx.getSystemInfo({
             success: function (res) {
                 context.getShoesDetail({
                     id: options.id,
+                    type: options.type,
                     w: res.screenWidth
                 });
             }
@@ -40,6 +43,7 @@ Page({
     {
         var context = this;
         params['h'] = 200;
+
         wx.request({
             
             url:  app.getRequestUrl('shoes-detail/'+params.id),

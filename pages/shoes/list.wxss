@@ -1,0 +1,107 @@
+@import "../component/shoesInfo.wxss";
+
+.list-shoes-box {
+    margin-top: 70rpx;
+}
+
+.session-header {
+    position: fixed;
+    z-index: 1;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    width: 100%;
+    height: 70rpx;
+    border-width: 1px 0px 1px 0px;
+    border-color: #e6e6e6;
+    border-style: solid;
+    background: #fff;
+    box-sizing: border-box;
+    padding-left:50rpx;
+}
+
+.session-header text
+{
+    color: #4a4a4a;
+    font-size: 26rpx;
+}
+
+.category-session {
+    min-height: 100%;
+    width: 100%;
+    display: flex;
+    position: fixed;
+    margin-top: 70rpx;
+    z-index: 1;
+    flex-direction: column;
+}
+
+.category-session .category-cover {
+    background: #ccc;
+    flex-grow: 1;
+    opacity: 0.3;
+    width: 100%;
+    height: 9999rpx;
+}
+
+.type-category-session {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    background: #fff;
+    min-height: 300rpx;
+}
+
+.t-c-s-left {
+    display: flex;
+    flex-direction: column;
+    background: #F5F5F5;
+    width: 230rpx;
+    padding:20rpx 0rpx 20rpx 0rpx;
+    text-indent: 30rpx;
+}
+.t-c-s-right {
+    display: flex;
+    flex-direction: column;
+    background: white;
+    width: 470rpx;
+    height: 100%;
+    max-height: 600rpx;
+    padding:20rpx 00rpx 20rpx 30rpx;
+}
+
+.whitebg {
+    background: white;
+}
+
+.type-category-session .category {
+    /* border: 1px solid #32cb32; */
+    /* background: #fff; */
+    height: 65rpx;
+    line-height: 60rpx;
+    width: 100%;
+    color: #4a4a4a;
+    font-weight: 500;
+    font-size: 24rpx;
+}
+
+.t-c-s-left .category {
+    justify-content:space-between;
+    display:flex;
+    flex-direction:row;
+}
+
+.t-c-s-left .category .mark {
+    margin-right: 10rpx;
+    width: 50rpx;
+    height: 100%;
+}
+
+.t-c-s-right .category {
+    border-bottom: 1rpx solid #F5F5F5;
+}
+
+.type-category-session .category-HL {
+  /* background: #32cb32;
+  color: #fff; */
+}

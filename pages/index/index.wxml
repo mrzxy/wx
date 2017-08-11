@@ -1,5 +1,5 @@
 <!--index.wxml-->
-<import src="shoesInfo.wxml" />
+<import src="../component/sale-shoesInfo.wxml" />
 
 <view class="container">
     <view  class="shoes-box">

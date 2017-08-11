@@ -1,0 +1,18 @@
+<template name="shoesInfo">
+    <navigator url="/pages/detail/detail?id={{id}}"  class="shoes-info">
+        <view class="shoes-info-left">
+            <view class="shoes-info-pic">
+                <image mode="aspectFit" src="{{pics[0]}}"></image>
+            </view>
+        </view>
+        <view class="shoes-info-right">
+            <view class="shoes-info-title">{{name}}</view>
+            <view class="shoes-info-price">
+                <block wx:if="{{price}}">
+                <span class="myiconfont {{price_type==1?'icon-qian':'icon-meiyuan'}}"></span>{{price}}
+                </block>
+            </view>
+            <view class="shoes-info-pubdata">{{pub_data}}</view>
+        </view>
+    </navigator>
+</template>

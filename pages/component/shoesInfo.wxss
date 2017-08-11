@@ -1,0 +1,38 @@
+
+.shoes-box {
+    width: 750rpx;
+}
+
+.shoes-info {
+    display: flex;
+    flex-direction: row;
+    height: 104px;
+}
+
+.shoes-info-left {
+    padding: 10px;
+}
+.shoes-info-pic {
+    border: 1px solid #e3e3e3;
+    height: 84px;
+    width: 129px;
+}
+
+.shoes-info-right {
+    padding: 10px;
+    flex-direction: column;
+    font-size: 10pt;
+}
+
+
+.shoes-info-price {
+    margin-top: 13rpx;
+    font-weight: bold;
+    font-size: 11pt;
+    height: 60rpx;
+}
+
+.shoes-info-pic image {
+    height: 100%;
+    width: 100%;
+}

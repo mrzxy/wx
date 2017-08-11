@@ -1,0 +1,17 @@
+<template name="shoesInfo">
+    <navigator url="/pages/detail/detail?id={{id}}&type=shoes"  class="shoes-info">
+        <view class="shoes-info-left">
+            <view class="shoes-info-pic" style="height:97px; width: 136px;">
+                <image mode="aspectFit" src="{{pics[0]}}"></image>
+            </view>
+        </view>
+        <view class="shoes-info-right">
+            <view class="shoes-info-title">{{name}}</view>
+            <view class="shoes-info-price">
+                <block wx:if="{{cny||usa}}">
+                <span class="myiconfont {{cny?'icon-qian':'icon-meiyuan'}}"></span>{{cny||usa}}
+                </block>
+            </view>
+        </view>
+    </navigator>
+</template>
