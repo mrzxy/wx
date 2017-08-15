@@ -9,7 +9,7 @@
             <view class="shoes-info-title">{{name}}</view>
             <view class="shoes-info-price">
                 <block wx:if="{{cny||usa}}">
-                <span class="myiconfont {{cny?'icon-qian':'icon-meiyuan'}}"></span>{{cny||usa}}
+                <span class="myiconfont {{cny&&cny!=usa?'icon-qian':'icon-meiyuan'}}"></span>{{cny&&cny!=usa?cny:usa}}
                 </block>
             </view>
         </view>

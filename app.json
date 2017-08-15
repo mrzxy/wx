@@ -1,7 +1,7 @@
 {
     "pages": [
-        "pages/shoes/list",
         "pages/index/index",
+        "pages/shoes/list",
         "pages/detail/detail",
         "pages/user/message"
         
@@ -20,8 +20,8 @@
         "borderStyle": "#DCDCDC",
         "list": [
             {
-                "iconPath": "statics/img/calendar-icon.png",
-                "selectedIconPath": "statics/img/calendar-icon-hover.png",
+                "iconPath": "statics/img/sale-icon.png",
+                "selectedIconPath": "statics/img/sale-icon-hover.png",
                 "pagePath":"pages/index/index",
                 "text":"发售日历"
             },

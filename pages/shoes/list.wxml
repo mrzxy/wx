@@ -2,16 +2,25 @@
 <import src="../component/shoesInfo.wxml" />
 
 <view class="container">
-    <view class="session-header" >
-        <text class="type-tab" bindtap="handleType">{{current.name}}</text>
+    <view class="search flex-wrp">
+        <view class="search-left flex-item">
+            <span class="myiconfont icon-sousuo"></span>
+            <input placeholder="搜索球鞋,如 air jordan" maxlength="30" placeholder-class="search-placeholder" bindconfirm="search" />
+        </view>
+        <view class="search-right flex-item"  bindtap="handleType">
+            <span class="myiconfont icon-fenlei" style="color:white; font-size:16pt" ></span>
+        </view>
     </view>
+    <!-- <view class="session-header" >
+        <text class="type-tab" bindtap="handleType">{{pageParam.name}}</text>
+    </view> -->
 
     <view wx:if="{{showCategory}}" class="category-session">
         <view class="type-category-session" bindtap="tapCate">
             <ul class="t-c-s-left" >
                 <li class="category" data-id="0" data-name="全部品牌">全部</li>
                 <block wx:for="{{categories}}" wx:key="id" wx:for-key="index" wx:for-item="raw">
-                    <li class="category {{hoverId==raw.id?'whitebg':''}}" data-bid="{{raw.id}}" data-sid="0" data-id="{{raw.id}}" data-name="{{raw.name}}">
+                    <li class="category {{pageParam.id==raw.id?'whitebg':''}}" data-bid="{{raw.id}}" data-sid="0" data-id="{{raw.id}}" data-name="{{raw.name}}">
                         {{raw.name}}
                         <text class="mark" data-action="next" data-key="{{index}}">></text>
                     </li>
@@ -30,5 +39,6 @@
         <view wx:for="{{lists}}" wx:key="key" wx:for-item="item">
             <template  is="shoesInfo" data="{{...item}}"></template>
         </view>
+        <view class="next-data" style>{{pullDownText}}</view> 
     </view>
 </view>

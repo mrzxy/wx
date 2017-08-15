@@ -87,5 +87,12 @@ Page({
         this.setData({
             formData: {}
         })
-    }
+    },
+
+        //转发
+    onShareAppMessage: function (res) {
+        return {
+            title: '留言&建议'
+        }
+    },
 })

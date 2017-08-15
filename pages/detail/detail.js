@@ -12,7 +12,8 @@ Page({
     data: {
         shoes : null,
         pics: [],
-        showLoading: false
+        showLoading: false,
+        swiperH: 227
     },
 
   /**
@@ -23,7 +24,6 @@ Page({
         var context = this;
         // options.id = 26; 
 
-        console.log(options);
 
         wx.getSystemInfo({
             success: function (res) {
@@ -42,7 +42,6 @@ Page({
     getShoesDetail (params)
     {
         var context = this;
-        params['h'] = 200;
 
         wx.request({
             
@@ -88,10 +87,14 @@ Page({
             if (item.url == data.src) {
                 item.loaded = true
                 item.w = data.width
+                item.h = data.height
             }
             return item
         })
-        this.setData({ pics })
+        this.setData({
+            pics,
+            swiperH: pics[0].h
+        })
     },
 
 

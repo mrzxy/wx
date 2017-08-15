@@ -2,14 +2,19 @@ let util = require('../../utils/util.js'),
     app = getApp()
 Page({
 
+    offset: 0,
+    lockPullDown: false,
+
     data: {
-        type: 'shoes',
-        current: {
-            'id': 0,
-            'name': '全部品牌'
+        pageParam: {
+            name: '',
+            id: 0,
+            bid: 0,
+            sid: 0,
+            kw: ''
         },
+        type: 'shoes',
         showCategory: false,
-        hoverId: 0,
 
         lists: [],
         categories: [],
@@ -17,7 +22,10 @@ Page({
 
     onLoad()    
     {
-        let context = this;
+        let context = this,
+            pageParam = Object.assign(this.data.pageParam, {
+                name: '全部品牌'
+            }, app.globalData.pageParam);
 
         this.getList();
 
@@ -26,29 +34,48 @@ Page({
             url: app.getRequestUrl('cates'),
             success: function (res) {
                 context.setData({
+                    pageParam: pageParam,
                     categories: res.data
                 })
             }
         })
     },
 
-    getList()
+    getList(param)
     {
         let context = this;
+        param = param || {}
+
+        typeof param.new != 'undefined' && (context.offset = 0);
+
         //list
         wx.request({
             url: app.getRequestUrl('shoes'),
             data: {
-                offset: 0,
+                offset: context.offset,
                 limit: 10,
-                brand_id: this.data.current.bid,
-                series_id: this.data.current.sid,
+                brand_id: this.data.pageParam.bid,
+                series_id: this.data.pageParam.sid,
                 w: 136,
-                h: 97
+                h: 97,
+                keyword: this.data.pageParam.kw
             },
             success: function (res) {
+
+
+                let lists = context.data.lists;
+                lists = context.data.lists.concat(res.data)
+
+                if (res.data.length < 1) {
+                    context.setData({pullDownText: '——没有数据了^b^——'});
+                    context.lockPullDown = true;
+                    return ;
+                }
+
+                context.offset += res.data.length;
+
                 context.setData({
-                    lists: res.data
+                    lists
                 })
             }
         })
@@ -58,10 +85,8 @@ Page({
     handleType(e)
     {
         this.setData({
-            "eventCategory": this.data.typeCategory,
-            "showCategory": true
+            "showCategory": this.data.showCategory ? false : true
         });
-
     },
 
     //点击类别外的区域，取消显示类别信息
@@ -83,29 +108,51 @@ Page({
             return ;
         }
 
-        if (data.id == this.data.current.id) {
-            this.setData({ "showCategory": false });
-            return ;
-        }
 
-        this.setCurrent(data);
-        //确认跳转
+        app.globalData.pageParam = data;
+
+        wx.reLaunch({
+            url: "list"
+        });
        
     },
 
-    setCurrent(data)
+    //下拉碰顶
+    onPullDownRefresh()
     {
-        this.setData({
-            current: {
-                'id': data.id,
-                'bid':data.bid,
-                'sid':data.sid,
-                'name': data.name,
-            },
-            hoverId: data.id,
-            showCategory: false
-        });
+        wx.stopPullDownRefresh()
+    },
 
-        this.getList();
-    }
+    //上拉触底
+    onReachBottom()
+    {
+        ! this.lockPullDown && this.getList();
+    },
+
+    search(e)
+    {
+        let value = e.detail.value.trim();
+        if (! value) {
+            return ;
+        }
+        app.globalData.pageParam = {
+            name: '',
+            id: 0,
+            bid: 0,
+            sid: 0,
+            kw: value
+        }
+
+        wx.reLaunch({
+            url: "list"
+        });
+    },
+
+    //转发
+    onShareAppMessage: function (res) {
+        //TODO
+        return {
+            title: '球鞋库'
+        }
+    },
 })

@@ -2,11 +2,3 @@
 
 @import "../component/shoesInfo.wxss";
 
-/* 往下加载更多 */
-.next-data {
-    font-size:10pt;
-    text-align: center;
-    height: 10rpx;
-    color: #e3e3e3;
-    width: 100%;
-}

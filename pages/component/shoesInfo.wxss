@@ -6,7 +6,7 @@
 .shoes-info {
     display: flex;
     flex-direction: row;
-    height: 104px;
+    /* height: 104px; */
 }
 
 .shoes-info-left {

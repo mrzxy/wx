@@ -1,7 +1,7 @@
 
 
 <!-- 图片导航区 -->
-<swiper class="pic-swiper-box" indicator-dots>
+<swiper class="pic-swiper-box" indicator-dots style="height:{{swiperH}}px">
     <view wx:for="{{shoes.pics.format}}" wx:key="pic" wx:for-index="key" wx:for-item="pic">
         <swiper-item class="pic-swiper-item">
             <!-- <image wx:if="{{key==0}}" src="/statics/img/loading.gif" hidden="{{showLoading}}" class="loading"></image> -->
@@ -17,9 +17,14 @@
     <view class="body">
         <view class="body-left">
             <view class="price">
-                <span wx:if="{{shoes.price_type==1}}" class="myiconfont icon-qian"></span>
-                <span wx:if="{{shoes.price_type==2}}" class="myiconfont icon-meiyuan"></span>
-                {{shoes.price}}
+                <block wx:if="{{shoes.price}}">
+                    <span wx:if="{{shoes.price_type==1}}" class="myiconfont icon-qian"></span>
+                    <span wx:if="{{shoes.price_type==2}}" class="myiconfont icon-meiyuan"></span>
+                    {{shoes.price}}
+                </block>
+                <block wx:else>
+                      <span class="myiconfont {{shoes.cny&&shoes.cny!=shoes.usa?'icon-qian':'icon-meiyuan'}}"></span>{{shoes.cny&&shoes.cny!=usa?shoes.cny:shoes.usa}}
+                </block>
             </view>
             <view class="price-desc">官方指导价</view>
         </view>
